@@ -1,5 +1,9 @@
 # TV, console and eARC connection planner｜電視、遊戲機及 eARC 接駁規劃器
 
+由 [Elechid 音立](https://elechid.com/) 製作及維護。
+
+Created and maintained by [Elechid 音立](https://elechid.com/en/).
+
 [English](https://elechid.github.io/tv-hdmi-connection-planner/) · [繁體中文](https://elechid.github.io/tv-hdmi-connection-planner/?lang=zh)
 
 Example: if HDMI 3 and 4 support both 4K120 and VRR and HDMI 3 is eARC, the soundbar uses HDMI 3, PS5 uses HDMI 4 and Xbox has no remaining suitable direct port.
