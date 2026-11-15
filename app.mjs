@@ -8,7 +8,7 @@ const form = document.querySelector('form');
 const results = document.querySelector('.results');
 const language = byId('language');
 const lockMode = key === 'lock';
-let locale = query.get('lang') === 'zh' ? 1 : 0;
+let locale = query.has('lang') ? Number(query.get('lang') === 'zh') : Number(document.documentElement.lang === 'zh-Hant');
 
 const fields = selected.fields.map(([, , initial, min, step, max]) => {
   const label = document.createElement('label');
@@ -89,7 +89,10 @@ form.addEventListener('submit', event => event.preventDefault());
 language.addEventListener('click', () => {
   locale = 1 - locale;
   const url = new URL(location.href);
-  if (locale) url.searchParams.set('lang','zh');
+  if (url.pathname.endsWith('/zh.html')) {
+    if (locale) url.searchParams.delete('lang');
+    else url.searchParams.set('lang','en');
+  } else if (locale) url.searchParams.set('lang','zh');
   else url.searchParams.delete('lang');
   history.replaceState(null,'',url);
   localize();

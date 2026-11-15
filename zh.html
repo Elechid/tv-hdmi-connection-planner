@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="可以，前提是 Soundbar 佔用 eARC 口後，電視仍有兩個同時支援 4K120 和 VRR 的輸入。">
+<title>電視、遊戲機及 eARC 接駁規劃器 | Elechid 音立</title>
+<style>
+:root { color: #152624; background: #edf4ef; font: 16px/1.55 system-ui,sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 60rem; margin: auto; padding: clamp(1rem,5vw,3.5rem); }
+header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+h1 { font-size: clamp(2rem,6vw,3.5rem); line-height: 1.08; letter-spacing: -.03em; margin-bottom: .4em; }
+p { max-width: 66ch; }
+form, .results { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,13rem),1fr)); gap: .8rem; margin-block: 1.5rem; }
+label, .results div { display: block; padding: .9rem 1rem; background: #fff; border: 1px solid #bbcfc4; border-radius: .75rem; }
+label { font-weight: 600; }
+input, button { font: inherit; color: inherit; border: 1px solid #58766a; border-radius: .4rem; background: #fff; padding: .45rem .65rem; }
+input { display: block; margin-top: .4rem; width: 100%; }
+button { cursor: pointer; }
+a { color: #075238; text-underline-offset: .17em; }
+output { display: block; font-size: 1.7rem; font-weight: 750; overflow-wrap: anywhere; }
+#error { color: #a42125; }
+
+nav { display:flex; flex-wrap:wrap; gap:.5rem 1rem; margin-top:1rem; }
+nav a[aria-current] { font-weight:750; }
+output { font-size:1.35rem; }
+textarea { width:100%; min-height:13rem; padding:.75rem; font:inherit; }
+form:empty,.results:empty { display:none; }
+</style>
+<script type="module" src="./app.mjs"></script>
+<link rel="canonical" href="https://elechid.github.io/tv-hdmi-connection-planner/zh.html">
+<link rel="alternate" hreflang="en" href="https://elechid.github.io/tv-hdmi-connection-planner/">
+<link rel="alternate" hreflang="zh-Hant" href="https://elechid.github.io/tv-hdmi-connection-planner/zh.html">
+<style>html[lang=en] [data-locale=zh-Hant],html[lang=zh-Hant] [data-locale=en]{display:none}.tool-answer{margin-block:1.4rem;padding:1rem;background:white;border:1px solid #bbcfc4;border-radius:.75rem}.tool-answer h2{margin-top:0}</style>
+</head>
+<body><main>
+<header><a id="brand" href="https://elechid.com/">Elechid 音立</a><button type="button" id="language" lang="en">English</button></header>
+<h1 id="title">電視、遊戲機及 eARC 接駁規劃器</h1>
+<p id="intro"></p>
+<form></form>
+<p id="error" role="status" hidden></p>
+<section class="results" aria-live="polite"></section>
+<section id="checklist" hidden>
+<label id="list-label" for="measurements">Measurement record</label>
+<textarea id="measurements" readonly></textarea>
+<button id="copy" type="button">Copy checklist</button>
+<p id="copy-status" role="status"></p>
+</section>
+<p id="note"></p>
+<section class="tool-answer" data-locale="zh-Hant" aria-labelledby="answer"><h2 id="answer">接駁 eARC Soundbar 後，PS5 和 Xbox 可以同時用 4K120 及 VRR 嗎？</h2><p>可以，前提是 Soundbar 佔用 eARC 口後，電視仍有兩個同時支援 4K120 和 VRR 的輸入。</p><p><strong>例子</strong> 如果 HDMI 3、4 都支援兩項功能，而 HDMI 3 是唯一 eARC 口，Soundbar 接 HDMI 3，PS5 接 HDMI 4。Xbox 就沒有另一個同時支援兩項功能的直駁端口。</p><p><strong>適用限制</strong> 請按完整電視型號核對各端口規格和設定。此規劃器按裝置直接接電視計算。</p></section><section class="tool-answer" data-locale="en"><h2>Can PS5 and Xbox both use 4K120 and VRR with an eARC soundbar?</h2><p>Yes, if the TV still has two inputs supporting both 4K120 and VRR after the soundbar takes the eARC port.</p><p><strong>Worked example</strong> If HDMI 3 and 4 support both features and HDMI 3 is the only eARC port, connect the soundbar to HDMI 3 and the PS5 to HDMI 4. The Xbox then has no suitable direct input for both features.</p><p><strong>Limits</strong> Check the exact TV model, per-port specifications and settings. This planner assumes direct connections to the TV.</p></section>
+<noscript>JavaScript is required. 此工具需要 JavaScript。</noscript>
+<p><a id="guide" href="https://elechid.com/blogs/news/tv-connection-guide-hong-kong-hdmi-cables-earc-soundbars-consoles">閱讀 Elechid 選購及安裝指南</a> · <a id="source" href="https://github.com/Elechid/tv-hdmi-connection-planner">Source code</a></p>
+<nav aria-label="Language"><a href="./" hreflang="en" lang="en">English</a><a href="./zh.html" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></nav>
+</main></body></html>
