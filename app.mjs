@@ -14,9 +14,9 @@ const fields = selected.fields.map(([, , initial, min, step, max]) => {
   const label = document.createElement('label');
   const text = document.createElement('span');
   const input = document.createElement('input');
-  input.required = true;
-  input.value = initial;
-  if (typeof initial === 'number') {
+  input.required = min !== undefined;
+  input.value = initial ?? '';
+  if (min !== undefined) {
     input.type = 'number';
     input.min = min;
     input.step = step ?? 'any';
@@ -40,10 +40,10 @@ const cards = selected.labels.map(() => {
 
 function render() {
   let values = [];
-  let invalid = !fields.every(({input}) => input.validity.valid && input.value.trim());
+  let invalid = !fields.every(({input}) => input.validity.valid);
   if (!invalid) {
     try {
-      values = selected.calculate(...fields.map(({input}) => input.type === 'number' ? input.valueAsNumber : input.value.trim()));
+      values = selected.calculate(...fields.map(({input}) => input.value.trim() ? (input.type === 'number' ? input.valueAsNumber : input.value.trim()) : null));
     } catch (error) {
       if (!(error instanceof RangeError)) throw error;
       invalid = true;
@@ -56,11 +56,11 @@ function render() {
   cards.forEach(({output}, index) => {
     const value = values[index];
     const unit = selected.labels[index][2];
-    output.textContent = invalid ? '—' : typeof value === 'boolean'
+    output.textContent = invalid ? '—' : value == null ? ['Unconfirmed','待確認'][locale] : Array.isArray(value) ? value[locale] : typeof value === 'string' ? value : typeof value === 'boolean'
       ? (value ? ['Yes','是'] : ['No','否'])[locale]
       : format.format(Math.abs(value) < 1e-9 ? 0 : value) + (unit ? ' ' + unit : '');
   });
-  byId('measurements').value = invalid ? '' : values.map((value, i) => selected.fields[i][locale] + ' — ' + value).join('\n');
+  byId('measurements').value = invalid ? '' : [selected.title[locale], ...values.map((value, i) => selected.fields[i][locale] + ' — ' + (value ?? ['Not measured','未量'][locale])), ['Photos: outside, inside, door edge and frame by the lock.','相片：門外、門內、門邊及鎖位門框。'][locale]].join('\n');
 }
 
 function localize() {
@@ -69,10 +69,12 @@ function localize() {
   language.textContent = locale ? 'English' : '繁體中文';
   language.lang = locale ? 'en' : 'zh-Hant';
   byId('title').textContent = selected.title[locale];
-  byId('intro').textContent = ['Replace the example values with your own measurements.','請用你的實際規格或量度結果取代示例數字。'][locale];
+  byId('intro').textContent = selected.intro[locale];
   byId('note').textContent = selected.note[locale];
   byId('source').textContent = ['Source code','原始碼'][locale];
   byId('brand').href = 'https://elechid.com' + (locale ? '/' : '/en/');
+  byId('guide').href = 'https://elechid.com' + (locale ? '' : '/en') + '/blogs/news/' + selected.guide;
+  byId('guide').textContent = ['Read the Elechid guide','閱讀 Elechid 選購及安裝指南'][locale];
   byId('error').textContent = ['Check all inputs and confirm the listed specifications agree.','請核對各欄輸入，並確認規格互相一致。'][locale];
   byId('checklist').hidden = !lockMode;
   byId('list-label').textContent = ['Measurement record','量度紀錄'][locale];

@@ -2,12 +2,10 @@
 
 [English](https://elechid.github.io/tv-hdmi-connection-planner/) · [繁體中文](https://elechid.github.io/tv-hdmi-connection-planner/?lang=zh)
 
-Two 4K120 inputs with one reserved for eARC leave one for consoles.
+Example: if HDMI 3 and 4 support both 4K120 and VRR and HDMI 3 is eARC, the soundbar uses HDMI 3, PS5 uses HDMI 4 and Xbox has no remaining suitable direct port.
 
-兩個 4K120 口其中一個接 eARC，剩一個可接遊戲機。
+例如 HDMI 3 和 4 同時支援 4K120 和 VRR，HDMI 3 是 eARC。Soundbar 接 HDMI 3，PS5 接 HDMI 4，便沒有另一個符合條件的口直駁 Xbox。
 
-Designed for initial planning. Follow the limitations shown beside the results. All calculations run in the browser.
-
-由 [Elechid 音立](https://elechid.com/) 維護。結果供初步規劃，請留意工具內的限制。
+[English guide](https://elechid.com/en/blogs/news/tv-connection-guide-hong-kong-hdmi-cables-earc-soundbars-consoles) · [繁中指南](https://elechid.com/blogs/news/tv-connection-guide-hong-kong-hdmi-cables-earc-soundbars-consoles)
 
 Run locally with `python3 -m http.server`. [MIT licence](LICENSE).
